@@ -1,0 +1,134 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon class="color-green-light" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+      <ion-title>
+        DATOS DE CUENTA
+      </ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-item lines="none">
+    <img src="assets/images/tabs-2.svg">
+  </ion-item>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="header">
+      <ion-col size="3">
+        <img src="assets/images/oink-icon.svg">
+      </ion-col>
+      <ion-col size="9">
+        <h3 class="color-green-dark">¿CUÁLES SON TUS DATOS?</h3>
+        <p class="color-gray-dark">Ahora necesitamos saber algunos datos tuyos</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="form">
+      <ion-col size="12">
+        <form [formGroup]="formData">
+          <h2 class="color-green-dark">Documento de identidad</h2>
+
+          <ion-item>
+            <ion-label position="floating">Tipo de documento</ion-label>
+            <ion-select interface="popover" formControlName="document_type" required>
+              <ion-select-option *ngFor="let item of documentTypes" [value]="item.id">
+                {{ item.description }}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+          <small class="text-danger" *ngIf="formData.get('document_type').touched && formData.get('document_type').errors?.required">
+            Este campo es requerido
+          </small>
+
+          <ion-item>
+            <ion-label position="floating">Número de documento</ion-label>
+            <ion-input type="number" formControlName="document_number" required></ion-input>
+          </ion-item>
+          <small class="text-danger" *ngIf="formData.get('document_number').touched && formData.get('document_number').errors?.required">
+            Este campo es requerido
+          </small>
+          
+          <ion-item>
+            <ion-label position="floating">Fecha de expedición del documento</ion-label>
+            <ion-input type="text" formControlName="date_expedition" required></ion-input>
+          </ion-item>
+          <small class="text-danger" *ngIf="formData.get('date_expedition').touched && formData.get('date_expedition').errors?.required">
+            Este campo es requerido
+          </small>
+          
+          <ion-item>
+            <ion-label position="floating">Fecha de nacimiento</ion-label>
+            <ion-input type="text" formControlName="date_birth" required></ion-input>
+          </ion-item>
+          <small class="text-danger" *ngIf="formData.get('date_birth').touched && formData.get('date_birth').errors?.required">
+            Este campo es requerido
+          </small>
+          
+          <ion-item>
+            <ion-label position="floating">Genero</ion-label>
+            <ion-select interface="popover" formControlName="gender" required>
+              <ion-select-option *ngFor="let item of genders" [value]="item.id">
+                {{ item.description }}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+          <small class="text-danger" *ngIf="formData.get('gender').touched && formData.get('gender').errors?.required">
+            Este campo es requerido
+          </small>
+
+          <h2 class="color-green-dark">Configura tu cuenta</h2>
+
+          <ion-item>
+            <ion-label position="floating">Correo electrónico</ion-label>
+            <ion-input type="email" formControlName="email_text" required autocomplete="off"></ion-input>
+          </ion-item>
+          <small class="text-danger" *ngIf="formData.get('email_text').touched && formData.get('email_text').errors?.required">
+            Este campo es requerido
+          </small>
+          <small class="text-danger" *ngIf="formData.get('email_text').errors?.pattern">
+            Correo no válido
+          </small>
+          
+          <ion-item>
+            <ion-label position="floating">Confirmar correo electrónico</ion-label>
+            <ion-input type="email" formControlName="email_match" required autocomplete="off"></ion-input>
+            <ion-icon class="color-green-light" name="checkmark-outline" slot="end" *ngIf="formData.get('email_text').value == formData.get('email_match').value"></ion-icon>
+          </ion-item>
+          <small class="text-danger" *ngIf="formData.get('email_match').touched && formData.get('email_match').errors?.required">
+            Este campo es requerido
+          </small>
+          <small class="text-danger" *ngIf="formData.get('email_match').errors?.pattern">
+            Correo no válido
+          </small>
+
+          <ion-item>
+            <ion-label position="floating">PIN de seguridad</ion-label>
+            <ion-input [type]="fieldPinCodeType ? 'number' : 'password'" formControlName="pin_security_code" required maxlength="4" autocomplete="off"></ion-input>
+            <ion-icon [name]="fieldPinCodeType? 'eye-off' : 'eye'" (click)="toggleFieldPinType('code')" slot="end"></ion-icon>
+          </ion-item>
+          <small class="text-danger" *ngIf="formData.get('pin_security_code').touched && formData.get('pin_security_code').errors?.required">
+            Este campo es requerido
+          </small>
+
+          <ion-item>
+            <ion-label position="floating">Confirmar PIN de seguridad</ion-label>
+            <ion-input [type]="fieldPinMatchType ? 'number' : 'password'" formControlName="pin_security_match" required maxlength="4" autocomplete="off"></ion-input>
+            <ion-icon [name]="fieldPinMatchType? 'eye-off' : 'eye'" (click)="toggleFieldPinType('match')" slot="end"></ion-icon>
+          </ion-item>
+          <small class="text-danger" *ngIf="formData.get('pin_security_match').touched && formData.get('pin_security_match').errors?.required">
+            Este campo es requerido
+          </small>
+
+          <ion-item>
+            <ion-button expand="block" [ngClass]="formData.invalid || formData.get('email_text').value != formData.get('email_match').value || formData.get('pin_security_code').value != formData.get('pin_security_match').value ? 'bg-gray-light color-gray-dark font-monserrat-bold': 'bg-green-light color-green-dark font-monserrat-bold'" [disabled]="formData.invalid || formData.get('email_text').value != formData.get('email_match').value || formData.get('pin_security_code').value != formData.get('pin_security_match').value" (click)="next()">
+              SIGUIENTE
+            </ion-button>
+          </ion-item>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

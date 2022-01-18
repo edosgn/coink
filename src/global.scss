@@ -24,3 +24,131 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+@import '~swiper/swiper-bundle.css';
+@import '~@ionic/angular/css/ionic-swiper';
+
+/* Import monserrat fonts */
+@font-face {   
+    font-family: 'monserrat-regular';  //This is what we are going to call  
+    src: url('./assets/fonts/montserrat/Montserrat-Regular.otf');
+}
+@font-face {   
+    font-family: 'monserrat-bold';  //This is what we are going to call  
+    src: url('./assets/fonts/montserrat/Montserrat-Bold.otf');
+}
+
+/* Import monserrat fonts */
+@font-face {   
+    font-family: 'avenir-55-roman';  //This is what we are going to call  
+    src: url('./assets/fonts/avenir-lt-std/Avenir_LT_Std_55_Roman.otf');
+}
+@font-face {   
+    font-family: 'avenir-65-medium';  //This is what we are going to call  
+    src: url('./assets/fonts/avenir-lt-std/Avenir_LT_Std_65_Medium.otf');
+}
+@font-face {   
+    font-family: 'avenir-95-black';  //This is what we are going to call  
+    src: url('./assets/fonts/avenir-lt-std/Avenir_LT_Std_95_Black.otf');
+}
+
+
+:root[mode=ios] .font-monserrat-regular,
+:root[mode=md] .font-monserrat-regular{
+  --ion-font-family: 'monserrat-regular' !important;
+  font-family: 'monserrat-regular' !important;
+}
+
+:root[mode=ios] .font-monserrat-bold,
+:root[mode=md] .font-monserrat-bold{
+  --ion-font-family: 'monserrat-bold' !important;
+  font-family: 'monserrat-bold' !important;
+}
+
+:root[mode=ios] .font-avenir-55-roman,
+:root[mode=md] .font-avenir-55-roman{
+  --ion-font-family: 'avenir-55-roman' !important;
+  font-family: 'avenir-55-roman' !important;
+}
+
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+h1, h2, h3, h4, h5, h6 { font-family: 'monserrat-bold'; }
+
+.bg-green-light{
+    background: #1EEA00 !important;
+    --background: #1EEA00 !important;
+}
+
+.bg-green-dark{
+    background: #004B40 !important;
+    --background: #004B40 !important;
+}
+
+.bg-gray-light{
+    background: #D3D3D3 !important;
+    --background: #D3D3D3 !important;
+}
+
+.color-white{
+    color: #fff !important;
+}
+
+.color-green-light{
+    color: #1EEA00 !important;
+}
+
+.color-green-dark{
+    color: #004B40 !important;
+}
+
+.color-gray-dark{
+    color: #757575;
+}
+
+.text-danger{
+    color: #FF0000;
+}
+
+ion-modal{
+    background: transparent !important;
+    --background: transparent !important;
+}
+
+ion-header{
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+
+    ion-buttons{
+        width: 100%;
+        position: relative;
+
+        ion-button{
+            z-index: 1;
+            
+            ion-icon{
+                font-size: 30px !important;
+            }
+        }
+
+        ion-title{
+            position: absolute;
+            width: 100%;
+            font-family: 'monserrat-bold';
+            font-size: 16px;
+            text-align: center !important;
+            z-index: 0;
+        }
+    }
+
+    ion-item{
+        img{
+            margin: auto;
+        }
+    }
+}

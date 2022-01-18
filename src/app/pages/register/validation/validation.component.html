@@ -1,0 +1,47 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon class="color-green-light" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+      <ion-title>
+        NÚMERO CELULAR
+      </ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-item lines="none">
+    <img src="assets/images/tabs-1.svg">
+  </ion-item>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="header">
+      <ion-col size="3">
+        <img src="assets/images/oink-icon.svg">
+      </ion-col>
+      <ion-col size="9">
+        <p class="color-gray-dark">Digíta el código que recibiste vía <b>mensaje de texto</b> al 300-000-0000</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="form">
+      <ion-col size="12">
+        <form class="ion-padding" [formGroup]="formValidation">
+          <ion-item lines="none">
+            <ion-input type="text" maxlength="4" formControlName="number" placeholder="X X X X" required></ion-input>
+          </ion-item>
+          <small class="text-danger" *ngIf="formValidation.get('number').touched && formValidation.get('number').errors?.required">Campo requerido</small>
+          <small class="text-danger" *ngIf="formValidation.get('number').touched && formValidation.get('number').errors?.pattern">Solo puede digitar números</small>
+          <small class="text-danger" *ngIf="formValidation.get('number').touched && formValidation.get('number').errors?.maxlength">Digite 4 números</small>
+        </form>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <app-pad [updateType]="'only_backspace'" (padEvent)="padEvent($event)"></app-pad>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

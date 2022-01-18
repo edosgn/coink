@@ -1,0 +1,33 @@
+ion-content{
+    ion-grid{
+        padding: 30px 20px !important;
+        
+        .header{
+            border-bottom: 1px solid #1EEA00;
+            padding: 10px 0;
+
+            p{
+                font-size: 16px;
+                text-align: justify;
+                padding: 3px 20px;
+                font-family: 'avenir-55-roman';
+            }
+        }
+
+        .form{
+            padding: 10px 0;
+            
+            ion-item{
+                box-shadow: 0 5px 50px rgba(0, 0, 0, 0.1);
+                height: 56px;
+                border-radius: 5px;
+
+                ion-input{
+                    text-align: center;
+                    font-size: 24px;
+                    font-family: 'avenir-55-roman';
+                }
+            }
+        }
+    }
+}

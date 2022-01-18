@@ -1,0 +1,21 @@
+<swiper #swiper [config]="config">
+  <!-- phone -->
+  <ng-template swiperSlide>
+    <app-phone (directionEvent)="directionEvent($event)" (eventFormPhone)="eventFormPhone($event)"></app-phone>
+  </ng-template>
+
+  <!-- validation -->
+  <ng-template swiperSlide>
+    <app-validation (directionEvent)="directionEvent($event)" (eventFormValidation)="eventFormValidation($event)"></app-validation>
+  </ng-template>
+
+  <!-- data -->
+  <ng-template swiperSlide>
+    <app-data (directionEvent)="directionEvent($event)" (eventFormData)="eventFormData($event)"></app-data>
+  </ng-template>
+
+  <!-- agreement -->
+  <ng-template swiperSlide>
+    <app-agreement (directionEvent)="directionEvent($event)" (eventFormAgreement)="eventFormAgreement($event)"></app-agreement>
+  </ng-template>
+</swiper>

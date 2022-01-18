@@ -1,0 +1,12 @@
+<ion-grid>
+  <ion-row *ngFor="let item of keyboard">
+    <ion-col size="4" *ngFor="let col of item.cols">
+      <ng-container *ngIf="col.visible">
+        <div *ngIf="col.type == 'number'" (click)="selected(col)">{{ col.value }}</div>
+        <div *ngIf="col.type == 'button'" [ngClass] = "col.class" (click)="selected(col)">
+          <img [src]="'assets/images/'+col.value">
+        </div>
+      </ng-container>
+    </ion-col>
+  </ion-row>
+</ion-grid>

@@ -1,0 +1,56 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon class="color-green-light" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+      <ion-title>
+        FINALIZAR
+      </ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-item lines="none">
+    <img src="assets/images/tabs-3.svg">
+  </ion-item>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="header">
+      <ion-col size="3">
+        <img src="assets/images/oink-policia.svg">
+      </ion-col>
+      <ion-col size="9">
+        <h3 class="color-green-dark">ESTAS MUY CERCA DE SER PARTE DE COINK.</h3>
+        <p class="color-gray-dark">Solo es necesario que leas detenidamente el contrato que se encuentra al final de esta pantalla y lo aceptes.</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="content">
+      <ion-col size="12">
+        <h2 class="color-green-dark">LO MÁS IMPORTANTE</h2>
+
+        <p>Para la apertura del Depósito de Bajo Monto en COINK debes ser una persona natural que de acuerdo con nuestra legislación vigente te encuentres en plena capacidad para adquirir derechos y contraer obligaciones. Abrirás una cuenta COINK de Bajo Monto la cual te permitirá tener un saldo hasta por 8 salarios mínimos en el mes y realizar débitos por el mismo valor. Si deseas sobrepasar estos límites debes solicitarnos la apertura de un Depósito Ordinario COINK Persona Natural. Solo puedes tener una cuenta COINK de Bajo Monto y podrás utilizar tu dispositivo móvil para consultar tu saldo, tus movimientos, realizar tus transacciones y administrar tu cuenta. Recuerda que no necesitas saldo mínimo ni monto inicial para su apertura.</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="form">
+      <ion-col size="12">
+        <h4 class="color-green-dark">Lee tu contrato</h4>
+
+        <form [formGroup]="formAgreement">
+          <ion-item lines="none">
+            <ion-checkbox formControlName="agreement"></ion-checkbox>
+            <ion-label>He leído ya acepto el contrato</ion-label>
+          </ion-item>
+        </form>
+
+        <ion-item>
+          <ion-button expand="block" [ngClass]="formAgreement.invalid ? 'bg-gray-light color-gray-dark font-monserrat-bold': 'bg-green-light color-green-dark font-monserrat-bold'" [disabled]="formAgreement.invalid" (click)="next()">
+            SIGUIENTE
+          </ion-button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

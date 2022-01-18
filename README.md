@@ -1,0 +1,1 @@
+<h1>COINK frontend Test</h1><h2>Getting Started</h2><p>This project was developed by implementing technology such as IONIC and ANGULAR.<br><br>Author<br><b>Edgar Guerrero Narvaez</b><br>@2022</p>

@@ -1,0 +1,45 @@
+<div class="content">
+  <div class="ion-padding-horizontal ion-text-center">
+    <ion-card class="card-form">
+      <div class="header ion-no-border ion-align-items-center" *ngIf="options.close">
+        <ion-toolbar>
+          <ion-buttons slot="end">
+            <img src="assets/images/icon-close.svg" class="close" (click)="close()" />
+          </ion-buttons>
+        </ion-toolbar>
+      </div>
+
+      <img [src]="'assets/images/'+options.image" class="image" *ngIf="options.image">
+
+      <ion-card-header class="ion-no-padding ion-margin-bottom" *ngIf="options.title">
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-text-center">
+            <ion-col size="12">
+              <h4 [class]="options.title.class">
+                {{ options.title.text }}
+              </h4>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-header>
+
+      <ion-card-content class="ion-no-padding ion-text-center" *ngIf="options.message">
+        <ion-item lines="none">
+          <ion-label class="ion-text-justify">
+            <p class="message ion-padding">{{ options.message }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-card-content>
+
+      <ion-grid class="ion-no-padding" *ngIf="options.buttons && options.buttons.length > 0">
+        <ion-row *ngFor="let button of options.buttons">
+          <ion-col size="12">
+            <ion-button size="small" [class]="button.class" (click)="getMethod(button.method)">
+              {{ button.title }}
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+  </div>
+</div>
